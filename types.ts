@@ -1,5 +1,5 @@
 export interface ResizedImage {
-  platform: 'twitch' | 'discord';
+  platform: string;
   size: number;
   dataUrl: string;
   blob: Blob;
@@ -16,6 +16,6 @@ export interface AIAnalysisResult {
 }
 
 export interface PlatformSize {
-  platform: 'twitch' | 'discord';
+  platform: string;
   size: number;
 }

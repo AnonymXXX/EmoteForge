@@ -1,13 +1,13 @@
 import React from 'react';
 import { Download, Package, CheckCircle2, Sparkles } from 'lucide-react';
 import { ResizedImage } from '../types';
-import { TwitchLogo, DiscordLogo } from './BrandIcons';
 import JSZip from 'jszip';
 import FileSaver from 'file-saver';
 
 interface ResultsGridProps {
   images: ResizedImage[];
   baseName: string;
+  sections: ResultSectionConfig[];
 }
 
 interface ResultSectionProps {
@@ -19,6 +19,13 @@ interface ResultSectionProps {
   onDownloadZip: () => void;
 }
 
+interface ResultSectionConfig {
+  key: string;
+  title: string;
+  icon: React.ReactNode;
+  themeColor: string;
+}
+
 const formatFileSize = (bytes: number): string => {
   if (bytes === 0) return '0 B';
   const k = 1024;
@@ -27,7 +34,7 @@ const formatFileSize = (bytes: number): string => {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
 };
 
-const ResultSection = ({ title, icon, themeColor, items, onDownload, onDownloadZip }: ResultSectionProps) => (
+const ResultSection: React.FC<ResultSectionProps> = ({ title, icon, themeColor, items, onDownload, onDownloadZip }) => (
     <div className="bg-white rounded-3xl border border-slate-100 shadow-card overflow-hidden flex flex-col h-full hover:shadow-card-hover transition-shadow duration-300">
         {/* Brand Header */}
         <div 
@@ -112,13 +119,13 @@ const ResultSection = ({ title, icon, themeColor, items, onDownload, onDownloadZ
     </div>
 );
 
-const ResultsGrid: React.FC<ResultsGridProps> = ({ images, baseName }) => {
+const ResultsGrid: React.FC<ResultsGridProps> = ({ images, baseName, sections }) => {
   
   const handleDownloadSingle = (img: ResizedImage) => {
     FileSaver.saveAs(img.blob, `${baseName}_${img.size}x${img.size}.png`);
   };
 
-  const handleDownloadZip = async (platform?: 'twitch' | 'discord') => {
+  const handleDownloadZip = async (platform?: string) => {
     const zip = new JSZip();
     const folder = zip.folder(baseName || 'emotes');
     
@@ -140,8 +147,8 @@ const ResultsGrid: React.FC<ResultsGridProps> = ({ images, baseName }) => {
     }
   };
 
-  const twitchImages = images.filter(i => i.platform === 'twitch');
-  const discordImages = images.filter(i => i.platform === 'discord');
+  const visibleSections = sections.filter((section) => images.some((img) => img.platform === section.key));
+  const isSingleSection = visibleSections.length === 1;
 
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-8 duration-700">
@@ -177,23 +184,29 @@ const ResultsGrid: React.FC<ResultsGridProps> = ({ images, baseName }) => {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        <ResultSection 
-            title="Twitch" 
-            icon={<TwitchLogo className="w-8 h-8 fill-white" />}
-            themeColor="#9146FF" 
-            items={twitchImages} 
-            onDownload={handleDownloadSingle}
-            onDownloadZip={() => handleDownloadZip('twitch')}
-        />
-        <ResultSection 
-            title="Discord" 
-            icon={<DiscordLogo className="w-9 h-7 fill-white" />}
-            themeColor="#5865F2" 
-            items={discordImages} 
-            onDownload={handleDownloadSingle}
-            onDownloadZip={() => handleDownloadZip('discord')}
-        />
+      <div
+        className={`grid grid-cols-1 gap-6 md:gap-8 ${isSingleSection ? 'md:grid-cols-1 md:justify-items-center' : 'md:grid-cols-2'}`}
+      >
+        {sections.map((section) => {
+          const sectionImages = images.filter((img) => img.platform === section.key);
+          if (sectionImages.length === 0) return null;
+
+          return (
+            <div
+              key={section.key}
+              className={isSingleSection ? 'w-full max-w-xl' : 'w-full'}
+            >
+              <ResultSection
+                title={section.title}
+                icon={section.icon}
+                themeColor={section.themeColor}
+                items={sectionImages}
+                onDownload={handleDownloadSingle}
+                onDownloadZip={() => handleDownloadZip(section.key)}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
