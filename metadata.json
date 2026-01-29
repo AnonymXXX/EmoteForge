@@ -1,0 +1,5 @@
+{
+  "name": "EmoteForge",
+  "description": "Secure, client-side image resizer for Twitch and Discord emotes. No server uploads - 100% private.",
+  "requestFramePermissions": []
+}
