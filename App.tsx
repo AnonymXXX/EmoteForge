@@ -270,7 +270,7 @@ const App: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="mt-12 border-t border-slate-200 bg-white/50 py-12 relative z-10">
+      <footer className="mt-12 border-t border-slate-200 bg-transparent py-12 relative z-10">
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
              <div className="flex items-center gap-1.5 mb-6 opacity-80 grayscale hover:grayscale-0 transition-all">
                 <img src="/logo.png" alt="EmoteForge logo" className="h-7 w-7 object-contain" />
