@@ -5,7 +5,6 @@ import ResultsGrid from './components/ResultsGrid';
 import { resizeImage, fileToDataUrl } from './services/imageService';
 import { ResizedImage, ProcessingState, PlatformSize } from './types';
 import { Image as ImageIcon, Lock, Zap, ServerOff, Monitor, Download, Info } from 'lucide-react';
-import Modal, { PrivacyContent, TermsContent, ContactContent } from './components/LegalModals';
 import { TwitchLogo, DiscordLogo } from './components/BrandIcons';
 
 const SIZES: PlatformSize[] = [
@@ -106,9 +105,6 @@ const App: React.FC = () => {
   });
   const [error, setError] = useState<string | null>(null);
   
-  // Modal State
-  const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | 'contact' | null>(null);
-
   // Scroll Ref
   const resultsRef = useRef<HTMLDivElement>(null);
 
@@ -278,26 +274,15 @@ const App: React.FC = () => {
              </div>
              
              <div className="flex justify-center gap-8 text-slate-500 text-sm font-medium mb-8">
-                <button onClick={() => setActiveModal('privacy')} className="hover:text-slate-900 transition-colors">Privacy Policy</button>
-                <button onClick={() => setActiveModal('terms')} className="hover:text-slate-900 transition-colors">Terms of Service</button>
-                <button onClick={() => setActiveModal('contact')} className="hover:text-slate-900 transition-colors">Contact</button>
+                <a href="/privacy.html" className="hover:text-slate-900 transition-colors">Privacy Policy</a>
+                <a href="/terms.html" className="hover:text-slate-900 transition-colors">Terms of Service</a>
+                <a href="mailto:melancholyzzzzz17@gmail.com" className="hover:text-slate-900 transition-colors">Contact</a>
              </div>
              <p className="text-xs text-slate-400">
                 &copy; {new Date().getFullYear()} EmoteForge. All processing is performed client-side.
              </p>
         </div>
       </footer>
-
-      {/* Modals */}
-      <Modal isOpen={activeModal === 'privacy'} onClose={() => setActiveModal(null)} title="Privacy Policy">
-        <PrivacyContent />
-      </Modal>
-      <Modal isOpen={activeModal === 'terms'} onClose={() => setActiveModal(null)} title="Terms of Service">
-        <TermsContent />
-      </Modal>
-      <Modal isOpen={activeModal === 'contact'} onClose={() => setActiveModal(null)} title="Contact Us">
-        <ContactContent />
-      </Modal>
     </div>
   );
 };
