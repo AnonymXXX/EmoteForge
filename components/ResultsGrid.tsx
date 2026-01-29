@@ -41,15 +41,17 @@ const ResultSection: React.FC<ResultSectionProps> = ({ title, icon, themeColor, 
             className="px-6 py-6 flex items-center justify-between border-b border-slate-50"
             style={{ backgroundColor: `${themeColor}05` }} // Very subtle tint
         >
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-3 sm:gap-5 min-w-0">
                 <div 
                     className="w-14 h-14 flex items-center justify-center rounded-2xl shadow-sm border border-black/5"
                     style={{ backgroundColor: themeColor, color: '#fff' }}
                 >
                     {icon}
                 </div>
-                <div>
-                    <h3 className="font-bold text-slate-900 text-xl leading-tight">{title}</h3>
+                <div className="min-w-0">
+                    <h3 className="font-bold text-slate-900 text-lg sm:text-xl leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+                        {title}
+                    </h3>
                     <p className="text-sm font-medium opacity-70" style={{ color: themeColor }}>
                         {items.length} sizes generated
                     </p>
@@ -61,7 +63,7 @@ const ResultSection: React.FC<ResultSectionProps> = ({ title, icon, themeColor, 
                     e.stopPropagation();
                     onDownloadZip();
                 }}
-                className="group flex items-center gap-2 px-5 py-2.5 bg-white border rounded-xl text-sm font-bold transition-all shadow-sm active:scale-95"
+                className="group flex items-center gap-2 px-3 py-2 sm:px-5 sm:py-2.5 bg-white border rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm active:scale-95"
                 style={{ borderColor: `${themeColor}40`, color: themeColor }}
                 onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = themeColor;
