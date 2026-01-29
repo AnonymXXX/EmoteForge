@@ -168,10 +168,8 @@ const App: React.FC = () => {
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-white/50 bg-white/70 backdrop-blur-xl">
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2.5">
-            <div className="bg-slate-900 text-white p-2 rounded-xl shadow-lg shadow-slate-200">
-                <ImageIcon size={18} />
-            </div>
+          <div className="flex items-center gap-2">
+            <img src="/logo.png" alt="EmoteForge logo" className="h-9 w-9 object-contain" />
             <h1 className="text-lg font-bold tracking-tight text-slate-900">
               EmoteForge
             </h1>
@@ -268,10 +266,8 @@ const App: React.FC = () => {
       {/* Footer */}
       <footer className="mt-12 border-t border-slate-200 bg-white/50 py-12 relative z-10">
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
-             <div className="flex items-center gap-2 mb-6 opacity-80 grayscale hover:grayscale-0 transition-all">
-                <div className="bg-slate-900 p-1.5 rounded">
-                     <ImageIcon size={16} className="text-white" />
-                </div>
+             <div className="flex items-center gap-1.5 mb-6 opacity-80 grayscale hover:grayscale-0 transition-all">
+                <img src="/logo.png" alt="EmoteForge logo" className="h-7 w-7 object-contain" />
                 <span className="font-bold text-slate-900">EmoteForge</span>
              </div>
              
