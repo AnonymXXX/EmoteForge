@@ -78,6 +78,7 @@ const ResultSection = ({ title, icon, themeColor, items, onDownload, onDownloadZ
                     key={img.size} 
                     onClick={() => onDownload(img)}
                     className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-slate-200 shadow-sm cursor-pointer transition-all duration-200 relative overflow-hidden"
+                    style={{ borderColor: '#e2e8f0', ['--theme-color' as React.CSSProperties['color']]: themeColor }}
                     onMouseEnter={(e) => e.currentTarget.style.borderColor = themeColor}
                     onMouseLeave={(e) => e.currentTarget.style.borderColor = '#e2e8f0'}
                 >
@@ -96,17 +97,8 @@ const ResultSection = ({ title, icon, themeColor, items, onDownload, onDownloadZ
                     </div>
 
                     <button 
-                        className="w-10 h-10 flex items-center justify-center rounded-full text-slate-300 hover:text-white transition-all relative z-10"
+                        className="w-10 h-10 flex items-center justify-center rounded-full text-slate-300 group-hover:text-white transition-all relative z-10 group-hover:bg-[var(--theme-color)]"
                         title="Download PNG"
-                        style={{ backgroundColor: 'transparent' }}
-                        onMouseEnter={(e) => {
-                             e.currentTarget.style.backgroundColor = themeColor;
-                             e.currentTarget.style.color = 'white';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = 'transparent';
-                            e.currentTarget.style.color = '#cbd5e1'; // slate-300
-                        }}
                         onClick={(e) => {
                             e.stopPropagation(); 
                             onDownload(img);
