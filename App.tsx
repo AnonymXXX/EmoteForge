@@ -6,6 +6,7 @@ import { ResizedImage, ProcessingState, PlatformSize } from './types';
 import { Image as ImageIcon, Lock, Zap, ServerOff, Monitor, Download, Info } from 'lucide-react';
 import Modal, { PrivacyContent, TermsContent, ContactContent } from './components/LegalModals';
 import { TwitchLogo, DiscordLogo } from './components/BrandIcons';
+import { Analytics } from '@vercel/analytics/react';
 
 const SIZES: PlatformSize[] = [
   { platform: 'twitch', size: 112 },
@@ -295,7 +296,7 @@ const App: React.FC = () => {
       <Modal isOpen={activeModal === 'contact'} onClose={() => setActiveModal(null)} title="Contact Us">
         <ContactContent />
       </Modal>
-
+      <Analytics />
     </div>
   );
 };
