@@ -22,8 +22,10 @@ const SeoArticle: React.FC = () => {
       </div>
 
       <div className="mt-16">
-        <h3 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-          <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm font-bold">1</span>
+        <h3 className="mb-8 flex items-start gap-3 text-2xl font-bold text-slate-900 sm:items-center">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-bold text-indigo-600">
+            1
+          </span>
           How to Create Custom Emotes: A Step-by-Step Guide
         </h3>
         
@@ -68,8 +70,10 @@ const SeoArticle: React.FC = () => {
       </div>
 
       <div className="mt-16">
-        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-          <span className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-600 text-sm font-bold">2</span>
+        <h3 className="mb-6 flex items-start gap-3 text-2xl font-bold text-slate-900 sm:items-center">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-purple-100 text-sm font-bold text-purple-600">
+            2
+          </span>
           Twitch Emote Size Requirements (2025 Updated)
         </h3>
         <p className="mb-6 text-lg">
@@ -113,8 +117,10 @@ const SeoArticle: React.FC = () => {
       </div>
 
       <div className="mt-16">
-        <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-          <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600 text-sm font-bold">3</span>
+        <h3 className="mb-4 flex items-start gap-3 text-2xl font-bold text-slate-900 sm:items-center">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-600">
+            3
+          </span>
           Discord Requirements
         </h3>
         <div className="bg-blue-50/50 border border-blue-100 rounded-2xl p-6">
@@ -161,7 +167,7 @@ const SeoArticle: React.FC = () => {
           <div>
             <h4 className="font-bold text-slate-900 text-lg mb-3">What formats are supported?</h4>
             <p className="text-slate-600 leading-relaxed">
-              We currently support PNG, JPEG, and WEBP. For emotes, we strongly recommend using <strong>PNG</strong> 
+              We currently support PNG, JPEG, and WEBP. For emotes, we strongly recommend using <strong>PNG </strong> 
               because it supports transparency and offers lossless compression.
             </p>
           </div>

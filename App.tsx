@@ -3,6 +3,7 @@ import ReactGA from 'react-ga4';
 import UploadZone from './components/UploadZone';
 import ResultsGrid from './components/ResultsGrid';
 import SeoArticle from './components/SeoArticle';
+import CookieBanner from './components/CookieBanner';
 import { resizeImage, fileToDataUrl } from './services/imageService';
 import { ResizedImage, ProcessingState, PlatformSize } from './types';
 import { Image as ImageIcon, Lock, Zap, ServerOff, Monitor, Download, Info } from 'lucide-react';
@@ -286,6 +287,8 @@ const App: React.FC = () => {
              </p>
         </div>
       </footer>
+
+      <CookieBanner />
     </div>
   );
 };
