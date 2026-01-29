@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ReactGA from 'react-ga4';
 import UploadZone from './components/UploadZone';
 import ResultsGrid from './components/ResultsGrid';
+import SeoArticle from './components/SeoArticle';
 import { resizeImage, fileToDataUrl } from './services/imageService';
 import { ResizedImage, ProcessingState, PlatformSize } from './types';
 import { Image as ImageIcon, Lock, Zap, ServerOff, Monitor, Download, Info } from 'lucide-react';
@@ -262,6 +263,8 @@ const App: React.FC = () => {
                 />
             </div>
         </div>
+
+        <SeoArticle />
 
       </main>
 
